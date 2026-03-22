@@ -43,6 +43,7 @@
               ./modules/linux/fuzzel.nix
               ./modules/linux/fastfetch.nix
               ./modules/linux/niri.nix
+              ./modules/linux/dunst.nix
             ];
           };
         }
