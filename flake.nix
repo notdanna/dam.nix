@@ -42,6 +42,7 @@
               ./modules/linux/foot.nix
               ./modules/linux/fuzzel.nix
               ./modules/linux/fastfetch.nix
+              ./modules/linux/niri.nix
             ];
           };
         }

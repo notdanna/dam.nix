@@ -1,0 +1,201 @@
+environment {
+    CLUTTER_BACKEND "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    ELM_DISPLAY "wl"
+    GDK_BACKEND "wayland"
+    NO_AT_BRIDGE "1"
+    OZONE_PLATFORM "wayland"
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    SDL_VIDEODRIVER "wayland"
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+}
+
+debug {
+  render-drm-device "/dev/dri/renderD128";
+}
+
+overview {
+    backdrop-color "#221b2d"
+    zoom 0.25
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "latam"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        tap-button-map "left-right-middle"
+        natural-scroll
+        accel-speed 0.2
+        accel-profile "adaptive"
+        scroll-method "two-finger"
+        dwt
+    }
+    
+    focus-follows-mouse
+    warp-mouse-to-focus
+    disable-power-key-handling
+}
+
+output "eDP-1" {
+    mode "3024x1890@120"
+    scale 1.8
+    transform "normal"
+    position x=0 y=0
+}
+
+
+layout {
+    gaps 12
+    center-focused-column "on-overflow"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 2
+        active-color "#b084f4"
+        inactive-color "#26233a"
+    }
+
+    insert-hint {
+        color "#b084f4aa"
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    background-color "#221b2d"
+}
+
+spawn-at-startup "waybar"
+spawn-sh-at-startup "~/.config/niri/autostart.sh"
+
+recent-windows {
+    debounce-ms 750
+    open-delay-ms 150
+    highlight {
+        active-color "#b084f4"
+        padding 30
+        corner-radius 0
+    }
+    previews {
+        max-height 400
+        max-scale 0.8
+    }
+    binds {
+        Alt+Tab { next-window; }
+        Alt+Shift+Tab { previous-window; }
+    }
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"
+
+animations {
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+window-rule {
+    match app-id=r#"^com\.nextcloud\.desktopclient\.nextcloud$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    block-out-from "screen-capture"
+}
+
+window-rule {
+    geometry-corner-radius 0
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"qalc$"#
+    open-floating true
+}
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Alt+Return { spawn "foot"; }
+    Alt+A { spawn "fuzzel"; }
+    Alt+Q { close-window; }
+    Alt+O { toggle-overview; }
+    Mod+Alt+L { spawn "swaylock" "-f" "-c" "000000"; }
+    Mod+Shift+E { quit; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "10%-"; }
+
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+L { focus-column-right; }
+
+    Mod+Shift+H { move-column-left-or-to-monitor-left; }
+    Mod+Shift+L { move-column-right-or-to-monitor-right; }
+
+    Alt+1 { focus-workspace 1; }
+    Alt+2 { focus-workspace 2; }
+    Alt+3 { focus-workspace 3; }
+    Alt+4 { focus-workspace 4; }
+    Alt+5 { focus-workspace 5; }
+    Alt+6 { focus-workspace 6; }
+    Alt+7 { focus-workspace 7; }
+    Alt+8 { focus-workspace 8; }
+    Alt+9 { focus-workspace 9; }
+
+    Mod+R { switch-preset-column-width; }
+    Alt+F { maximize-column; }
+    Alt+V { toggle-window-floating; }
+    Mod+Ctrl+Shift+4 { screenshot; }
+}

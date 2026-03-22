@@ -24,7 +24,7 @@
           keyColor = "34";
         }
         {
-          type = "kernel";./modules/linux/fuzzel.nix
+          type = "kernel";
           key = "~ ";
           keyColor = "34";
         }
