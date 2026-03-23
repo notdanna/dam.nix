@@ -13,7 +13,7 @@
     home = "/Users/dam";
   };
 
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.enable = false;
 
   environment.systemPackages = with pkgs; [
     git

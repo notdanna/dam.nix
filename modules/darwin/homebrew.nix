@@ -26,6 +26,8 @@
       "onlyoffice"
       "blip"
       "pearcleaner"
+      "xquartz"
+      "ghostty"
     ];
   };
 }
