@@ -62,6 +62,7 @@
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
     font-awesome
+    departure-mono
   ];
 
   system.stateVersion = "24.11";
