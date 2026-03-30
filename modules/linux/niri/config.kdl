@@ -164,8 +164,8 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Alt+Return { spawn "foot"; }
-    Alt+A { spawn "fuzzel"; }
-    Alt+Q { close-window; }
+    Mod+Space { spawn "fuzzel"; }
+    Mod+Q { close-window; }
     Alt+O { toggle-overview; }
     Mod+Alt+L { spawn "swaylock" "-f" "-c" "000000"; }
     Mod+Shift+E { quit; }

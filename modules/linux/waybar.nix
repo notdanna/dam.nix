@@ -62,21 +62,46 @@
         };
 
         "group/power" = {
-            orientation = "horizontal";
-            drawer = { "transition-duration" = 300; "transition-left-to-right" = false; };
-            modules = ["battery" "power-profiles-daemon"];
+           orientation = "horizontal";
+           drawer = { 
+        "transition-duration" = 300; 
+        "transition-left-to-right" = false; 
+        };
+        modules = [ "battery" "power-profiles-daemon" ];
         };
 
-        "cpu" = { "format" = " 󰘚 {usage}%  "; };
-        "memory" = { "format" = " {percentage}%"; };
+        "cpu" = { 
+          "format" = " 󰘚 {usage}%  "; 
+        };
+
+        "memory" = { 
+          "format" = " {percentage}%"; 
+        };
 
         "battery" = {
-            states = { "good" = 95; "warning" = 30; "critical" = 15; };
-            format = "{icon}";
-            format-charging = "<b>{icon}</b>";
-            format-icons = ["" "" "" "" ""];
-            tooltip-format = "{timeTo} {capacity}% | {power} W";
+          states = { 
+            "good" = 95; 
+            "warning" = 30; 
+            "critical" = 15; 
+          };
+          format = "{icon}";
+          format-charging = "<b>{icon}</b>";
+          format-icons = ["" "" "" "" ""];
+          tooltip-format = "{timeTo} {capacity}% | {power} W";
         };
+
+        "power-profiles-daemon" = {
+          format = "{icon}";
+          tooltip-format = "Perfil: {profile}";
+          format-icons = {
+            default = "";
+            performance = "";
+            balanced = "";
+            power-saver = "";
+          };
+        };
+
+
 
         "pulseaudio" = {
             format = "{volume}% {icon}";
@@ -123,12 +148,16 @@
             color: #e0def4;
         }
 
-        #workspaces, #window, #pulseaudio, #network, #battery, #clock, #playerctl, #tray {
+        #workspaces, #window, #pulseaudio, #network, #battery, #clock, #playerctl, #tray, #power-profiles-daemon {
             background: rgba(26, 23, 58, 0);
             color: #b084f4;
             margin: 4px 2px;
             padding: 0px 8px;
             border-radius: 0px;
+        }
+
+        #power-profiles-daemon {
+            padding-left: 5px;
         }
 
         #clock { margin-right: 8px; }
