@@ -19,7 +19,7 @@
         ./hosts/darwin/default.nix
         home-manager.darwinModules.home-manager {
           home-manager.users.dam = {
-            imports = [ ./home.nix ];
+            imports = [ ./home.nix ./modules/darwin/zsh.nix ];
           };
         }
       ];
@@ -44,6 +44,7 @@
               ./modules/linux/fastfetch.nix
               ./modules/linux/niri.nix
               ./modules/linux/dunst.nix
+              ./modules/linux/zsh.nix
             ];
           };
         }

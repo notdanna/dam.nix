@@ -12,6 +12,5 @@
     tmux
     tree
     zoxide
-    kew
   ];
 }

@@ -3,12 +3,6 @@
     enable = true;
     onActivation.cleanup = "zap";
 
-    taps = [
-    ];
-
-    brews = [
-    ];
-
     casks = [
       "discord"
       "iina"
@@ -26,10 +20,9 @@
       "pearcleaner"
       "xquartz"
       "font-monocraft"
-      "librewolf"
+      "zen"
       "prismlauncher"
       "font-departure-mono"
-
     ];
   };
 }

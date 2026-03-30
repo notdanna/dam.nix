@@ -20,10 +20,15 @@
   networking.networkmanager.enable = true;
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
-  services.upower.enable = true;
   services.dbus.enable = true;
+  services.upower.enable = true;
+  services.tailscale.enable = true;
   services.power-profiles-daemon.enable = true;
   security.polkit.enable = true;
+
+  programs.dconf.enable = true;
+  programs.niri.enable = true;
+  programs.zsh.enable = true;
 
   users.users.dam = {
     isNormalUser = true;
@@ -32,15 +37,11 @@
     shell = pkgs.zsh;
   };
 
-  programs.dconf.enable = true;
-  programs.zsh.enable = true;
-  programs.niri.enable = true;
-  services.tailscale.enable = true;
+
   security.pam.services.swaylock = {};
 
   environment.systemPackages = with pkgs; [
     git
-    neovim
     curl
     brightnessctl
     inputs.zen-browser.packages.aarch64-linux.default

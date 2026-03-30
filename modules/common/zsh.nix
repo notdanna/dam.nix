@@ -7,7 +7,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "zoxide" "fzf" ];
+      plugins = [ "git" "fzf" ];
     };
 
     plugins = [
@@ -36,16 +36,12 @@
       sshl  = "ssh dam@192.168.1.77";
       ssht  = "ssh dam@100.100.95.111";
 
-      nixb  = "sudo darwin-rebuild switch --flake ~/.config/nix#dam";
-      nixu  = "nix flake update ~/.config/nix && sudo darwin-rebuild switch --flake ~/.config/nix#dam";
       nixs  = "nix search nixpkgs";
       nixc  = "nix-collect-garbage -d";
       nixcd = "cd ~/.config/nix";
     };
 
     initContent = ''
-      eval "$(zoxide init zsh)"
-      [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
       [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
       if [ -f "$HOME/miniforge3/bin/activate" ]; then
@@ -56,7 +52,6 @@
       nixrun() { nix run nixpkgs#$1; }
       unalias nixtry 2>/dev/null
       nixtry() { nix shell nixpkgs#$1; }
-      # ...
     '';
   };
 

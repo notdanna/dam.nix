@@ -13,7 +13,7 @@ services.skhd = {
     lalt - w : bash -c 'SPACES=($(yabai -m query --displays --display | jq ".spaces[]")); [[ -n ''${SPACES[4]} ]] && yabai -m space --focus ''${SPACES[4]}'
     lalt - e : bash -c 'SPACES=($(yabai -m query --displays --display | jq ".spaces[]")); [[ -n ''${SPACES[5]} ]] && yabai -m space --focus ''${SPACES[5]}'
 
-    lalt - s : yabai -m window --toggle float
+    lalt - f : yabai -m window --toggle float
 
     shift + lalt - j : bash -c 'yabai -m window --warp west || (yabai -m window --display west && yabai -m display --focus west && yabai -m window --warp last) || yabai -m window --move rel:-10:0'
     shift + lalt - k : bash -c 'yabai -m window --warp south || (yabai -m window --display south && yabai -m display --focus south) || yabai -m window --move rel:0:10'
