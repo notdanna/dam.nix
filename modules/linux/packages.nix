@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     spotify-player
     obsidian
+    vesktop
     swaylock
 
     swaybg
