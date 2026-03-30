@@ -14,7 +14,6 @@
       "iina"
       "iterm2"
       "keka"
-      "obs"
       "obsidian"
       "spotify"
       "telegram"
@@ -23,11 +22,14 @@
       "visual-studio-code"
       "whatsapp"
       "zed"
-      "onlyoffice"
       "blip"
       "pearcleaner"
       "xquartz"
-      "ghostty"
+      "font-monocraft"
+      "librewolf"
+      "prismlauncher"
+      "font-departure-mono"
+
     ];
   };
 }
