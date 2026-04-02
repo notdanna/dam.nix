@@ -10,9 +10,12 @@
     apple-silicon-support.url = "github:nix-community/nixos-apple-silicon";
     apple-silicon-support.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:youwen5/zen-browser-flake";
+    sops-nix.url = "github:mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, apple-silicon-support, zen-browser, ... }: {
+  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, apple-silicon-support, zen-browser, sops-nix, nix-minecraft, ... }: {
     darwinConfigurations."dam" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
@@ -48,6 +51,17 @@
             ];
           };
         }
+      ];
+    };
+
+    nixosConfigurations."damx" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/server/default.nix
+        sops-nix.nixosModules.sops
+        nix-minecraft.nixosModules.minecraft-servers
+        { nixpkgs.overlays = [ nix-minecraft.overlay ]; }
       ];
     };
   };

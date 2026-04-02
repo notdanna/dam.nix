@@ -12,5 +12,7 @@
     tmux
     tree
     zoxide
+    age
+    sops
   ];
 }

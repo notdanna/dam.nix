@@ -1,0 +1,8 @@
+keys:
+  - &dam age1mg6fc2hl5glepr53tuf9h49fqwcvzr2ny65qa0gwhyxnw6uatsvsup5ar2
+
+creation_rules:
+  - path_regex: secrets\.yaml$
+    key_groups:
+      - age:
+          - *dam
