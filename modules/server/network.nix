@@ -9,6 +9,7 @@
     };
   };
 
+  networking.enableIPv6 = false;
   services.tailscale.enable = true;
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
   networking.firewall.allowedTCPPorts = [ 5032 3000 5000 ];
