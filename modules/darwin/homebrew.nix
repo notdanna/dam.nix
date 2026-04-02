@@ -15,6 +15,7 @@
       "utm"
       "xquartz"
       "claude"
+      "protonvpn"
 
       "spotify"
       "whatsapp"
