@@ -5,23 +5,27 @@
 
     casks = [
       "discord"
-      "iina"
-      "iterm2"
-      "keka"
-      "obsidian"
-      "spotify"
       "telegram"
-      "termius"
-      "utm"
+
       "visual-studio-code"
-      "whatsapp"
       "zed"
+      "obsidian"
+      "termius"
+      "iterm2"
+      "utm"
+      "xquartz"
+      "claude"
+
+      "spotify"
+      "whatsapp"
+      "prismlauncher"
+
+      "iina"
+      "keka"
       "blip"
       "pearcleaner"
-      "xquartz"
+
       "font-monocraft"
-      "zen"
-      "prismlauncher"
       "font-departure-mono"
     ];
   };
