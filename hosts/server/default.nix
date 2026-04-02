@@ -55,7 +55,7 @@
     ../../modules/server/hardware.nix
     ../../modules/server/network.nix
     ../../modules/server/system.nix
-    ../../modules/server/minecraft.nix
+    #../../modules/server/minecraft.nix
 
     ../../modules/server/hub/nextcloud.nix
     ../../modules/server/hub/cloudflare.nix
@@ -64,8 +64,8 @@
     ../../modules/server/hub/jellyfin.nix
     ../../modules/server/hub/navidrome.nix
 
-    #../../modules/server/hub/slskd.nix
-    #../../modules/server/hub/qbittorrent.nix
+    ../../modules/server/hub/slskd.nix
+    ../../modules/server/hub/qbittorrent.nix
     #../../modules/server/hub/kavita.nix
   ];
 
