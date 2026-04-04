@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   sops.defaultSopsFile = ../../secrets.yaml;
@@ -90,6 +90,41 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "video" "render" ];
     initialPassword = "200469";
   };
+
+  # GUI
+  programs.niri.enable = true;
+  programs.dconf.enable = true;
+  programs.zsh.enable = true;
+
+  security.polkit.enable = true;
+  security.pam.services.swaylock = {};
+
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = [ "gtk" ];
+    config.niri.default = [ "gtk" ];
+  };
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    font-awesome
+    departure-mono
+  ];
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  environment.systemPackages = with pkgs; [
+    git
+    curl
+    inputs.zen-browser.packages.x86_64-linux.default
+  ];
 
   system.stateVersion = "25.11";
 }

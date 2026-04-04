@@ -62,6 +62,24 @@
         sops-nix.nixosModules.sops
         nix-minecraft.nixosModules.minecraft-servers
         { nixpkgs.overlays = [ nix-minecraft.overlay ]; }
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.dam = {
+            imports = [
+              ./home.nix
+              ./modules/linux/waybar.nix
+              ./modules/linux/packages.nix
+              ./modules/linux/foot.nix
+              ./modules/linux/fuzzel.nix
+              ./modules/linux/fastfetch.nix
+              ./modules/linux/niri.nix
+              ./modules/linux/dunst.nix
+              ./modules/server/zsh.nix
+            ];
+          };
+        }
       ];
     };
   };

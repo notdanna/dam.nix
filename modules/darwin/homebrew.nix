@@ -6,6 +6,7 @@
     casks = [
       "discord"
       "telegram"
+      "vesktop"
 
       "visual-studio-code"
       "zed"
