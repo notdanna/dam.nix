@@ -105,8 +105,8 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = [ "gtk" ];
-    config.niri.default = [ "gtk" ];
+    config.common.default = lib.mkForce [ "gtk" ];
+    config.niri.default = lib.mkForce [ "gtk" ];
   };
 
   fonts.packages = with pkgs; [
