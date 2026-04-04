@@ -102,7 +102,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = lib.mkForce [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = lib.mkForce [ "gtk" ];
     config.niri.default = lib.mkForce [ "gtk" ];
   };
