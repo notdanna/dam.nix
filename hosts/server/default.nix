@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   sops.defaultSopsFile = ../../secrets.yaml;
@@ -123,7 +123,6 @@
   environment.systemPackages = with pkgs; [
     git
     curl
-    inputs.zen-browser.packages.x86_64-linux.default
   ];
 
   system.stateVersion = "25.11";
