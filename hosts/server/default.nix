@@ -70,7 +70,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages;
-
   networking.hostName = "damx";
   networking.networkmanager.enable = true;
   time.timeZone = "America/Mexico_City";
@@ -101,11 +100,10 @@
   services.power-profiles-daemon.enable = true;
 
   xdg.portal = {
-    enable = true;
-    extraPortals = lib.mkForce [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = lib.mkForce [ "gtk" ];
-    config.niri.default = lib.mkForce [ "gtk" ];
-  };
+  enable = true;
+  config.common.default = "*";
+  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+};
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

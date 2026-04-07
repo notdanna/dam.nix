@@ -14,13 +14,9 @@ environment {
     XDG_SESSION_TYPE "wayland"
 }
 
-debug {
-  render-drm-device "/dev/dri/renderD128";
-}
-
 overview {
     backdrop-color "#221b2d"
-    zoom 0.25
+    zoom 0.3
 }
 
 input {
@@ -46,13 +42,12 @@ input {
     disable-power-key-handling
 }
 
-output "eDP-1" {
-    mode "3024x1890@120"
-    scale 1.8
+output "HDMI-A-1" {
+    mode "1920x1080@75"
+    scale 1
     transform "normal"
     position x=0 y=0
 }
-
 
 layout {
     gaps 12
@@ -91,25 +86,8 @@ layout {
 }
 
 spawn-at-startup "waybar"
+spawn-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri"
 spawn-sh-at-startup "~/.config/niri/autostart.sh"
-
-recent-windows {
-    debounce-ms 750
-    open-delay-ms 150
-    highlight {
-        active-color "#b084f4"
-        padding 30
-        corner-radius 0
-    }
-    previews {
-        max-height 400
-        max-scale 0.8
-    }
-    binds {
-        Alt+Tab { next-window; }
-        Alt+Shift+Tab { previous-window; }
-    }
-}
 
 hotkey-overlay {
     skip-at-startup
@@ -163,39 +141,87 @@ window-rule {
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Alt+Return { spawn "foot"; }
     Mod+Space { spawn "fuzzel"; }
-    Mod+Q { close-window; }
-    Alt+O { toggle-overview; }
     Mod+Alt+L { spawn "swaylock" "-f" "-c" "000000"; }
-    Mod+Shift+E { quit; }
+    Mod+Q { close-window; }
+    Mod+Tab { toggle-overview; }
+    Mod+Shift+Tab { spawn "killall" "-SIGUSR1" "waybar"; }
+    Mod+Return { spawn "foot"; }
+    Mod+E { spawn "xdg-open" "."; }
+
+    Mod+A { spawn "rofi" "-show" "drun"; }
+    Mod+B { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/bluetooth/bluetooth.sh"; }
+    Mod+Period { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/emoji/emoji.sh"; }
+    Mod+T { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/tmux/tmux.sh"; }
+    Mod+N { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/notes/notes.sh"; }
+    Mod+Shift+T { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/todo/todo.sh"; }
+    Mod+I { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/calendar/calendar.sh"; }
+    Mod+Comma { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/wallpaper/wallpaper.sh"; }
+    Mod+Shift+Comma { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/themecopy/copy.sh"; }
+    Mod+V { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/cliphist/cliphist.sh"; }
+    Mod+Escape { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/powermenu/powermenu.sh"; }
+
+    Mod+D { spawn "swaync-client" "-t"; }
+    Mod+Shift+Q { quit; }
+    
+    Mod+Shift+S { screenshot; }
+    Mod+Shift+A { screenshot-window; }
+    Mod+F { maximize-column; }
+    
+    Mod+Shift+Up { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+10%"; }
+    Mod+Shift+Down { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-10%"; }
+
+    XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+    XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioMedia allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioStop allow-when-locked=true { spawn "playerctl" "stop"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
-    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "+10%"; }
+    XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "10%-"; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
 
     Mod+H { focus-column-left; }
     Mod+J { focus-window-down; }
     Mod+K { focus-window-up; }
     Mod+L { focus-column-right; }
 
-    Mod+Shift+H { move-column-left-or-to-monitor-left; }
-    Mod+Shift+L { move-column-right-or-to-monitor-right; }
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-window-down; }
+    Mod+Shift+K { move-window-up; }
+    Mod+Shift+L { move-column-right; }
 
-    Alt+1 { focus-workspace 1; }
-    Alt+2 { focus-workspace 2; }
-    Alt+3 { focus-workspace 3; }
-    Alt+4 { focus-workspace 4; }
-    Alt+5 { focus-workspace 5; }
-    Alt+6 { focus-workspace 6; }
-    Alt+7 { focus-workspace 7; }
-    Alt+8 { focus-workspace 8; }
-    Alt+9 { focus-workspace 9; }
+    Mod+Left { set-column-width "-10%"; }
+    Mod+Right { set-column-width "+10%"; }
+    Mod+Up { set-window-height "-10%"; }
+    Mod+Down { set-window-height "+10%"; }
+
+    Mod+Shift+N { spawn "python" "/absolute/path/to/network.py"; }
 
     Mod+R { switch-preset-column-width; }
-    Alt+F { maximize-column; }
-    Alt+V { toggle-window-floating; }
+    Mod+S { toggle-window-floating; }
+    Mod+Alt+Tab { focus-window-previous; }
     Mod+Ctrl+Shift+4 { screenshot; }
 }

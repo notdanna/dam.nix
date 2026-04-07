@@ -1,9 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   home.packages = with pkgs; [
     spotify-player
     obsidian
     vesktop
     swaylock
+    inputs.zen-browser.packages."${pkgs.system}".default
 
     swaybg
     playerctl

@@ -26,6 +26,9 @@
     unzip
     p7zip
     jq
+
+    rofi
+    wttrbar
     
     # Complementos de Zsh
     zsh-powerlevel10k 

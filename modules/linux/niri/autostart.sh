@@ -1,6 +1,6 @@
 #!/bin/sh
 
-swaybg -m fill -i ~/walls/dark.jpg &
+swaybg -m fill -i ~/walls/main.jpg &
 
 dunst &
 
