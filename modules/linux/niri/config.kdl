@@ -82,7 +82,9 @@ layout {
         color "#0007"
     }
 
-    background-color "#221b2d"
+    // background-color "#221b2d"
+    background-color "#000000"
+
 }
 
 spawn-at-startup "waybar"
@@ -151,14 +153,14 @@ binds {
 
     Mod+A { spawn "rofi" "-show" "drun"; }
     Mod+B { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/bluetooth/bluetooth.sh"; }
-    Mod+Period { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/emoji/emoji.sh"; }
+    // Mod+Period { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/emoji/emoji.sh"; }
     Mod+T { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/tmux/tmux.sh"; }
-    Mod+N { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/notes/notes.sh"; }
-    Mod+Shift+T { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/todo/todo.sh"; }
+    // Mod+N { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/notes/notes.sh"; }
+    // Mod+Shift+T { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/todo/todo.sh"; }
     Mod+I { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/calendar/calendar.sh"; }
-    Mod+Comma { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/wallpaper/wallpaper.sh"; }
-    Mod+Shift+Comma { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/themecopy/copy.sh"; }
-    Mod+V { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/cliphist/cliphist.sh"; }
+    // Mod+Comma { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/wallpaper/wallpaper.sh"; }
+    // Mod+Shift+Comma { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/themecopy/copy.sh"; }
+    // Mod+V { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/cliphist/cliphist.sh"; }
     Mod+Escape { spawn "bash" "-c" "~/dam.nix/modules/linux/rofi/powermenu/powermenu.sh"; }
 
     Mod+D { spawn "swaync-client" "-t"; }
