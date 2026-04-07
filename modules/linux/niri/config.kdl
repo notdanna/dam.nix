@@ -62,9 +62,10 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
-        width 2
-        active-color "#b084f4"
-        inactive-color "#26233a"
+        width 1
+        // active-color "#b084f4"
+        active-color "#1a1a1a"
+        inactive-color "#000000"
     }
 
     insert-hint {

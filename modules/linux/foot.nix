@@ -31,7 +31,8 @@
 
       colors-dark = {
         alpha = "0.93";
-        background = "1a1423";
+        # background = "1a1423";
+        background = "000000";
         foreground = "e0def4";
         cursor = "ffffff ffffff";
         regular0 = "26233a";
