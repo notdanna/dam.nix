@@ -12,6 +12,8 @@
     tmux
     tree
     zoxide
+    ffmpeg
+    bento4
     age
     sops
   ];
