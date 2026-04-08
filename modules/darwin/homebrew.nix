@@ -21,7 +21,10 @@
       "spotify"
       "whatsapp"
       "prismlauncher"
-
+      "arc"
+      "vivaldi"
+      
+      "obs"
       "iina"
       "keka"
       "blip"
