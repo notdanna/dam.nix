@@ -99,6 +99,8 @@
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
 
+  services.usbmuxd.enable = true;
+
   xdg.portal = {
   enable = true;
   config.common.default = "*";
@@ -119,6 +121,10 @@
   environment.systemPackages = with pkgs; [
     git
     curl
+
+    usbutils
+    # libimobiledevice
+    # idevicerestore
   ];
 
   system.stateVersion = "25.11";

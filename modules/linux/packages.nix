@@ -3,11 +3,14 @@
     spotify-player
     obsidian
     vesktop
+    qutebrowser
     swaylock
     inputs.zen-browser.packages."${pkgs.system}".default
 
     swaybg
     playerctl
+
+    
     (vscode.override {
       commandLineArgs = [
         "--ozone-platform=wayland"
@@ -15,6 +18,8 @@
       ];
     })
   ];
+
+
   services.nextcloud-client = {
     enable = true;
     startInBackground = true;

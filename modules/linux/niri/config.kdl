@@ -15,8 +15,8 @@ environment {
 }
 
 overview {
-    backdrop-color "#221b2d"
-    zoom 0.3
+    backdrop-color "#000000"
+    zoom 0.7
 }
 
 input {
