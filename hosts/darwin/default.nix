@@ -20,6 +20,13 @@
     curl
   ];
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.monaspace
+  ];
+
+  services.openssh.enable = true;
   programs.zsh.enable = true;
   system.stateVersion = 5;
 }
