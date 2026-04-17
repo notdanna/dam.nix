@@ -16,5 +16,6 @@
     bento4
     age
     sops
+    ripgrep
   ];
 }
