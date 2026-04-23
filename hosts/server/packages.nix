@@ -21,6 +21,8 @@
     ripgrep 
     cloudflared
     python3
+    python3Packages.requests
+    python3Packages.pillow
     ffmpeg
     zip
     unzip

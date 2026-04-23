@@ -13,10 +13,11 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, zen-browser, sops-nix, nix-minecraft, ... }: {
+  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }: {
     darwinConfigurations."dam" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
+      # Eliminado system = "aarch64-darwin";
       modules = [
+        { nixpkgs.hostPlatform = "aarch64-darwin"; }
         ./hosts/darwin/default.nix
         home-manager.darwinModules.home-manager {
           home-manager.users.dam = {
@@ -27,13 +28,14 @@
     };
 
     nixosConfigurations."damx" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      # Eliminado system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+        { nixpkgs.hostPlatform = "x86_64-linux"; }
         ./hosts/server/default.nix
-        sops-nix.nixosModules.sops
-        nix-minecraft.nixosModules.minecraft-servers
-        { nixpkgs.overlays = [ nix-minecraft.overlay ]; }
+        inputs.sops-nix.nixosModules.sops
+        inputs.nix-minecraft.nixosModules.minecraft-servers
+        { nixpkgs.overlays = [ inputs.nix-minecraft.overlay ]; }
         home-manager.nixosModules.home-manager
         {
           home-manager.extraSpecialArgs = { inherit inputs; };
