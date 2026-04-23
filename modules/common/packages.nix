@@ -17,5 +17,6 @@
     age
     sops
     ripgrep
+    yt-dlp
   ];
 }

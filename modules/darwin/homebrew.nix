@@ -4,7 +4,6 @@
     onActivation.cleanup = "zap";
 
     casks = [
-      # "discord"
       "telegram"
       "vesktop"
       "alcove"
@@ -13,7 +12,6 @@
       "zed"
       "nextcloud"
       "obsidian"
-      # "termius"
       "iterm2"
       "utm"
       "xquartz"
@@ -21,11 +19,12 @@
       "protonvpn"
       "tailscale-app"
 
-      # "spotify"
+      "spotify"
       "whatsapp"
       # "prismlauncher"
-      # "arc"
+      "arc"
       
+      "iina"
       "keka"
       "blip"
       "pearcleaner"
