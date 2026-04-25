@@ -5,7 +5,6 @@
 /* appearance */
 static const unsigned int borderpx  = 5;
 static const unsigned int snap      = 3;
-static const int user_bh            = 6;
 static const int showbar            = 1;
 static const int topbar             = 1;
 static const int vertpad            = 15;
