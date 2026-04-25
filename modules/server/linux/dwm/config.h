@@ -10,22 +10,16 @@ static const int topbar             = 1;
 static const int vertpad            = 15;
 static const int sidepad            = 15;
 
-/* fullgaps */
-static const unsigned int gappih    = 15;
-static const unsigned int gappiv    = 15;
-static const unsigned int gappoh    = 15;
-static const unsigned int gappov    = 15;
-
 static const char *fonts[]    = { "JetBrains Mono:size=11" };
 static const char dmenufont[] = "JetBrains Mono:size=11";
 
-static char normbgcolor[]     = "#0B0A10";
-static char normbordercolor[] = "#444444";
-static char normfgcolor[]     = "#bbbbbb";
-static char selfgcolor[]      = "#eeeeee";
-static char selbordercolor[]  = "#78527b";
-static char selbgcolor[]      = "#78527b";
-static char *colors[][3] = {
+static const char normbgcolor[]     = "#0B0A10";
+static const char normbordercolor[] = "#444444";
+static const char normfgcolor[]     = "#bbbbbb";
+static const char selfgcolor[]      = "#eeeeee";
+static const char selbordercolor[]  = "#78527b";
+static const char selbgcolor[]      = "#78527b";
+static const char *colors[][3] = {
 	/*               fg           bg           border   */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
 	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
@@ -46,9 +40,9 @@ static const int resizehints    = 0;
 static const int lockfullscreen = 1;
 
 static const Layout layouts[] = {
-	{ "",  tile    },
-	{ "󰭩", NULL    },
-	{ "",  monocle },
+	{ "[]=", tile    },
+	{ "><>", NULL    },
+	{ "[M]", monocle },
 };
 
 /* key definitions */
@@ -101,10 +95,6 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period,              focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,               tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,              tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,               incrgaps,       {.i = -5 } },
-	{ MODKEY,                       XK_equal,               incrgaps,       {.i = +5 } },
-	{ MODKEY|ShiftMask,             XK_equal,               defaultgaps,    {0} },
-	{ MODKEY,                       XK_g,                   togglegaps,     {0} },
 	TAGKEYS(                        XK_1,                                   0)
 	TAGKEYS(                        XK_2,                                   1)
 	TAGKEYS(                        XK_3,                                   2)
