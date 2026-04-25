@@ -98,8 +98,16 @@
     windowManager.dwm = {
       enable = true;
       package = pkgs.dwm.overrideAttrs (old: {
+        version = "6.4";
+        src = pkgs.fetchurl {
+          url = "https://dl.suckless.org/dwm/dwm-6.4.tar.gz";
+          sha256 = "0visf2knqr5357kxa4zvva020p2yf3yhk261rxv50j44lmlhv77s";
+        };
         patches = [
+          ../../modules/server/linux/dwm/patches/dwm-fullgaps-6.4.diff
           ../../modules/server/linux/dwm/patches/dwm-barpadding-20211020-a786211.diff
+          ../../modules/server/linux/dwm/patches/dwm-bar-height-spacing-6.3.diff
+          ../../modules/server/linux/dwm/patches/dwm-xrdb-6.4.diff
         ];
         postPatch = "cp ${../../modules/server/linux/dwm/config.h} config.h";
       });

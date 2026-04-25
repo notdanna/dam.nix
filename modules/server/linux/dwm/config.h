@@ -5,21 +5,30 @@
 /* appearance */
 static const unsigned int borderpx  = 5;
 static const unsigned int snap      = 3;
+static const int user_bh            = 6;
 static const int showbar            = 1;
 static const int topbar             = 1;
 static const int vertpad            = 15;
 static const int sidepad            = 15;
 
+/* gaps (fullgaps patch) */
+static const unsigned int gappx     = 15;
+static const unsigned int gappih    = 15;
+static const unsigned int gappiv    = 15;
+static const unsigned int gappoh    = 15;
+static const unsigned int gappov    = 15;
+
 static const char *fonts[]    = { "JetBrains Mono:size=11" };
 static const char dmenufont[] = "JetBrains Mono:size=11";
 
-static const char normbgcolor[]     = "#0B0A10";
-static const char normbordercolor[] = "#444444";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selfgcolor[]      = "#eeeeee";
-static const char selbordercolor[]  = "#78527b";
-static const char selbgcolor[]      = "#78527b";
-static const char *colors[][3] = {
+/* mutable for xrdb live reload */
+static char normbgcolor[]     = "#0B0A10";
+static char normbordercolor[] = "#444444";
+static char normfgcolor[]     = "#bbbbbb";
+static char selfgcolor[]      = "#eeeeee";
+static char selbordercolor[]  = "#78527b";
+static char selbgcolor[]      = "#78527b";
+static char *colors[][3] = {
 	/*               fg           bg           border   */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
 	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
@@ -62,6 +71,7 @@ static const char *termcmd[]  = { "st", "-e", "zsh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key                     function        argument */
+	{ MODKEY,                       XK_n,                   xrdb,           {.v = NULL } },
 	{ MODKEY,                       XK_a,                   spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,              spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_s,                   spawn,          SHCMD("flameshot gui") },
@@ -95,6 +105,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period,              focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,               tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,              tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_minus,               incrgaps,       {.i = -5 } },
+	{ MODKEY,                       XK_equal,               incrgaps,       {.i = +5 } },
+	{ MODKEY|ShiftMask,             XK_equal,               defaultgaps,    {0} },
 	TAGKEYS(                        XK_1,                                   0)
 	TAGKEYS(                        XK_2,                                   1)
 	TAGKEYS(                        XK_3,                                   2)
