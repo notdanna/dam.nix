@@ -3,12 +3,12 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 5;
+static const unsigned int borderpx  = 1;
 static const unsigned int snap      = 3;
 static const int showbar            = 1;
 static const int topbar             = 1;
-static const int vertpad            = 15;
-static const int sidepad            = 15;
+static const int vertpad            = 0;
+static const int sidepad            = 0;
 
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=11" };
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=11";
