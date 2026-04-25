@@ -104,9 +104,9 @@
           sha256 = "0visf2knqr5357kxa4zvva020p2yf3yhk261rxv50j44lmlhv77s";
         };
         patches = [
+          ../../modules/server/linux/dwm/patches/dwm-xrdb-6.4.diff
           ../../modules/server/linux/dwm/patches/dwm-fullgaps-6.4.diff
           ../../modules/server/linux/dwm/patches/dwm-barpadding-20211020-a786211.diff
-          ../../modules/server/linux/dwm/patches/dwm-xrdb-6.4.diff
         ];
         postPatch = "cp ${../../modules/server/linux/dwm/config.h} config.h";
       });
