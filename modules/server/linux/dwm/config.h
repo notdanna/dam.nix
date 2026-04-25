@@ -68,7 +68,6 @@ static const char *termcmd[]  = { "st", "-e", "zsh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key                     function        argument */
-	{ MODKEY,                       XK_n,                   xrdb,           {.v = NULL } },
 	{ MODKEY,                       XK_a,                   spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,              spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_s,                   spawn,          SHCMD("flameshot gui") },

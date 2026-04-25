@@ -101,11 +101,6 @@
         patches = [
           ../../modules/server/linux/dwm/patches/dwm-fullgaps-6.4.diff
           ../../modules/server/linux/dwm/patches/dwm-barpadding-20211020-a786211.diff
-          ../../modules/server/linux/dwm/patches/dwm-xrdb-6.4.diff
-          ../../modules/server/linux/dwm/patches/dwm-notitle-20210715-138b405.diff
-          ../../modules/server/linux/dwm/patches/dwm-restartsig-20180523-6.2.diff
-          ../../modules/server/linux/dwm/patches/dwm-statusallmons-6.2.diff
-          ../../modules/server/linux/dwm/patches/dwm-warp-6.4.diff
         ];
         postPatch = "cp ${../../modules/server/linux/dwm/config.h} config.h";
       });
