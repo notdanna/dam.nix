@@ -10,8 +10,8 @@ static const int topbar             = 1;
 static const int vertpad            = 15;
 static const int sidepad            = 15;
 
-static const char *fonts[]          = { "JetBrains Mono:size=11" };
-static const char dmenufont[]       = "JetBrains Mono:size=11";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=11" };
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=11";
 
 static const char normbgcolor[]     = "#0B0A10";
 static const char normbordercolor[] = "#444444";
