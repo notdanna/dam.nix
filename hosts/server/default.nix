@@ -54,7 +54,7 @@
     ../../modules/server/network.nix
     ../../modules/server/system.nix
     #../../modules/server/minecraft.nix
-	
+  
     ../../modules/server/hub/networks.nix
     ../../modules/server/hub/nextcloud.nix
     ../../modules/server/hub/cloudflare.nix
@@ -103,15 +103,12 @@
     windowManager.dwm = {
       enable = true;
       package = pkgs.dwm.overrideAttrs (old: {
-        version = "6.4";
-        src = pkgs.fetchurl {
-          url = "https://dl.suckless.org/dwm/dwm-6.4.tar.gz";
-          sha256 = "0visf2knqr5357kxa4zvva020p2yf3yhk261rxv50j44lmlhv77s";
+        src = pkgs.fetchgit {
+          url = "https://codeberg.org/notdanna/dawm.c.git";
+          rev = "4a57781efe025593cb93cf0d92dc3f3f6a98a393";
+          sha256 = "sha256-nSJYV9k8zTYKlzGB+6FaZ/DW/vc1IyZHG0FVnqeWkPI=";
         };
-        patches = [
-          ../../modules/server/linux/dwm/patches/dwm-barpadding-20211020-a786211.diff
-        ];
-        postPatch = "cp ${../../modules/server/linux/dwm/config.h} config.h";
+        sourceRoot = "source/dots/dwm";
       });
     };
   };
@@ -119,10 +116,7 @@
   environment.systemPackages = with pkgs; [
     git
     curl
-
     usbutils
-    # libimobiledevice
-    # idevicerestore
   ];
 
   system.stateVersion = "25.11";
