@@ -15,7 +15,6 @@
     unzip
     p7zip
 
-    dwm
     dmenu
     st
     xorg.xrandr
