@@ -3,37 +3,24 @@
 {
   # --- LISTA DE PAQUETES ---
   environment.systemPackages = with pkgs; [
-    # Herramientas base
-    git 
-    curl 
-    neovim 
-    wget 
-    btop 
-    tmux
-    fastfetch 
-    ranger 
-    tldr 
-    eza 
-    bat
-    fzf
-    spotify-player
-    tree
-    ripgrep 
+    git
+    curl
+    wget
+    tldr
     cloudflared
     python3
     python3Packages.requests
     python3Packages.pillow
-    ffmpeg
     zip
     unzip
     p7zip
-    jq
 
-    rofi
-    wttrbar
-    
-    # Complementos de Zsh
-    zsh-powerlevel10k 
+    dwm
+    dmenu
+    st
+    xorg.xrandr
+
+    zsh-powerlevel10k
     meslo-lgs-nf
   ];
 

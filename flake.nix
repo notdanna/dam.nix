@@ -7,15 +7,14 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    # zen-browser.url = "github:0xc000022070/zen-browser-flake";
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    # nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }: {
     darwinConfigurations."dam" = nix-darwin.lib.darwinSystem {
-      # Eliminado system = "aarch64-darwin";
       modules = [
         { nixpkgs.hostPlatform = "aarch64-darwin"; }
         ./hosts/darwin/default.nix
@@ -28,14 +27,13 @@
     };
 
     nixosConfigurations."damx" = nixpkgs.lib.nixosSystem {
-      # Eliminado system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         { nixpkgs.hostPlatform = "x86_64-linux"; }
         ./hosts/server/default.nix
         inputs.sops-nix.nixosModules.sops
-        inputs.nix-minecraft.nixosModules.minecraft-servers
-        { nixpkgs.overlays = [ inputs.nix-minecraft.overlay ]; }
+        # inputs.nix-minecraft.nixosModules.minecraft-servers
+        # { nixpkgs.overlays = [ inputs.nix-minecraft.overlay ]; }
         home-manager.nixosModules.home-manager
         {
           home-manager.extraSpecialArgs = { inherit inputs; };
@@ -45,13 +43,7 @@
           home-manager.users.dam = {
             imports = [
               ./home.nix
-              ./modules/linux/waybar.nix
-              ./modules/linux/packages.nix
-              ./modules/linux/foot.nix
-              ./modules/linux/fuzzel.nix
-              ./modules/linux/fastfetch.nix
-              ./modules/linux/niri.nix
-              ./modules/linux/dunst.nix
+              ./modules/server/linux/fastfetch.nix
               ./modules/server/zsh.nix
             ];
           };

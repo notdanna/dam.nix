@@ -88,35 +88,14 @@
     initialPassword = "200469";
   };
 
-  # GUI
-  programs.niri.enable = true;
-  programs.dconf.enable = true;
   programs.zsh.enable = true;
-
   security.polkit.enable = true;
-  security.pam.services.swaylock = {};
 
-  services.upower.enable = true;
-  services.power-profiles-daemon.enable = true;
-
-  services.usbmuxd.enable = true;
-
-  xdg.portal = {
-  enable = true;
-  config.common.default = "*";
-  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-};
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    font-awesome
-    departure-mono
-  ];
-
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  services.xserver = {
+    enable = true;
+    windowManager.dwm.enable = true;
+    displayManager.startx.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     git

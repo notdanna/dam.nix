@@ -4,6 +4,8 @@
     onActivation.cleanup = "zap";
 
     casks = [
+      "wireshark"
+      
       "telegram"
       "vesktop"
       "alcove"
