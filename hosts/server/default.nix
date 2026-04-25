@@ -92,9 +92,14 @@
   programs.zsh.enable = true;
   security.polkit.enable = true;
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
+    xkb.layout = "latam";
     windowManager.dwm = {
       enable = true;
       package = pkgs.dwm.overrideAttrs (old: {
