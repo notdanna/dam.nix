@@ -26,12 +26,17 @@
           MYSQL_DATABASE = "nextcloud";
           MYSQL_USER = "nextcloud";
           MYSQL_HOST = "nextcloud-db";
+          NEXTCLOUD_TRUSTED_DOMAINS = "cloud.notdam.dev";
+          NEXTCLOUD_OVERWRITEHOST = "cloud.notdam.dev";
+          NEXTCLOUD_OVERWRITEPROTOCOL = "https";
+          NEXTCLOUD_OVERWRITECONDADDR = "^172\\..*";
+          TRUSTED_PROXIES = "172.16.0.0/12";
         };
-        volumes = [ 
-        "/home/dam/nextcloud/data:/var/www/html" 
-        "/home/dam/navidrome/music:/navidrome_music:ro"
-        "/home/dam/slskd/downloads:/slskd_downloads:ro"
-        "/home/dam/dataset:/dataset_tt:ro"
+        volumes = [
+          "/home/dam/nextcloud/data:/var/www/html"
+          "/home/dam/navidrome/music:/navidrome_music:ro"
+          "/home/dam/slskd/downloads:/slskd_downloads:ro"
+          "/home/dam/dataset:/dataset_tt:ro"
         ];
         extraOptions = [ "--network=nextcloud-net" ];
       };

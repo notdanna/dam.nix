@@ -1,6 +1,34 @@
 { config, lib, pkgs, ... }:
 
+let
+  # Definición de tus herramientas de suckless desde carpetas locales
+  myDwm = pkgs.dwm.overrideAttrs (oldAttrs: {
+    src = /home/dam/dawm.c/dots/dwm;
+    preBuild = "make clean";
+    makeFlags = [ "PREFIX=$(out)" ];
+    buildInputs = with pkgs; [ 
+      libinput 
+      libX11 
+      libXft 
+      libXinerama 
+    ];
+    nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.pkg-config ];
+  });
+
+  myDmenu = pkgs.dmenu.overrideAttrs (oldAttrs: {
+    src = /home/dam/dawm.c/dots/dmenu;
+    preBuild = "make clean";
+    makeFlags = [ "PREFIX=$(out)" ];
+    buildInputs = with pkgs; [ 
+      libX11 
+      libXft 
+      libXinerama 
+    ];
+    nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.pkg-config ];
+  });
+in
 {
+  # --- SECRETOS Y ENTORNO ---
   sops.defaultSopsFile = ../../secrets.yaml;
   sops.age.keyFile = "/root/.config/sops/age/keys.txt";
 
@@ -32,14 +60,12 @@
       chmod 600 /run/slskd.env
     '';
   };
+
+  # --- CONFIGURACIÓN DE NIX ---
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.substituters = lib.mkForce [
-    "https://cache.nixos.org/"
-  ];
-  nix.settings.trusted-public-keys = lib.mkForce [
-    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-  ];
+  nix.settings.substituters = lib.mkForce [ "https://cache.nixos.org/" ];
+  nix.settings.trusted-public-keys = lib.mkForce [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
   nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
@@ -47,27 +73,24 @@
     options = "--delete-older-than 7d";
   };
 
+  # --- IMPORTS ---
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
     ../../modules/server/hardware.nix
     ../../modules/server/network.nix
     ../../modules/server/system.nix
-    #../../modules/server/minecraft.nix
-  
     ../../modules/server/hub/networks.nix
     ../../modules/server/hub/nextcloud.nix
     ../../modules/server/hub/cloudflare.nix
-
     ../../modules/server/hub/immich.nix
     ../../modules/server/hub/jellyfin.nix
     ../../modules/server/hub/navidrome.nix
-
     ../../modules/server/hub/slskd.nix
     ../../modules/server/hub/qbittorrent.nix
-    #../../modules/server/hub/kavita.nix
   ];
 
+  # --- SISTEMA BASE ---
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages;
@@ -96,27 +119,30 @@
     nerd-fonts.jetbrains-mono
   ];
 
+  # --- X11 Y DWM ---
+  services.libinput.enable = true;
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
     xkb.layout = "latam";
     windowManager.dwm = {
       enable = true;
-      package = pkgs.dwm.overrideAttrs (old: {
-        src = pkgs.fetchgit {
-          url = "https://codeberg.org/notdanna/dawm.c.git";
-          rev = "4a57781efe025593cb93cf0d92dc3f3f6a98a393";
-          sha256 = "sha256-nSJYV9k8zTYKlzGB+6FaZ/DW/vc1IyZHG0FVnqeWkPI=";
-        };
-        sourceRoot = "source/dots/dwm";
-      });
+      package = myDwm;
     };
   };
 
+  # --- PAQUETES DEL SISTEMA ---
   environment.systemPackages = with pkgs; [
     git
     curl
     usbutils
+    xrandr
+    myDmenu
+    # Otros paquetes que necesites para tu dwm
+    flameshot
+    xcolor
+    pamixer
+    brightnessctl
   ];
 
   system.stateVersion = "25.11";
