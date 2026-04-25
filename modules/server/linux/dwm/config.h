@@ -4,13 +4,18 @@
 
 /* appearance */
 static const unsigned int borderpx  = 5;
-static const unsigned int gappx     = 15;
 static const unsigned int snap      = 3;
 static const int user_bh            = 6;
 static const int showbar            = 1;
 static const int topbar             = 1;
 static const int vertpad            = 15;
 static const int sidepad            = 15;
+
+/* fullgaps */
+static const unsigned int gappih    = 15;
+static const unsigned int gappiv    = 15;
+static const unsigned int gappoh    = 15;
+static const unsigned int gappov    = 15;
 
 static const char *fonts[]    = { "JetBrains Mono:size=11" };
 static const char dmenufont[] = "JetBrains Mono:size=11";
@@ -62,7 +67,6 @@ static char dmenumon[2] = "0";
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", "-e", "zsh", NULL };
 
-#include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key                     function        argument */
 	{ MODKEY,                       XK_n,                   xrdb,           {.v = NULL } },
@@ -84,8 +88,6 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,                   incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,                   setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,                   setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_j,                   movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,                   movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return,              zoom,           {0} },
 	{ MODKEY,                       XK_Tab,                 view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,                   killclient,     {0} },
@@ -101,9 +103,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period,              focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,               tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,              tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,               setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,               setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_equal,               setgaps,        {.i = 0  } },
+	{ MODKEY,                       XK_minus,               incrgaps,       {.i = -5 } },
+	{ MODKEY,                       XK_equal,               incrgaps,       {.i = +5 } },
+	{ MODKEY|ShiftMask,             XK_equal,               defaultgaps,    {0} },
+	{ MODKEY,                       XK_g,                   togglegaps,     {0} },
 	TAGKEYS(                        XK_1,                                   0)
 	TAGKEYS(                        XK_2,                                   1)
 	TAGKEYS(                        XK_3,                                   2)
