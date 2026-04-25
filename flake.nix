@@ -45,6 +45,7 @@
               ./home.nix
               ./modules/server/linux/fastfetch.nix
               ./modules/server/zsh.nix
+	      ./modules/server/linux/packages.nix
             ];
           };
         }

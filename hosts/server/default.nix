@@ -54,7 +54,8 @@
     ../../modules/server/network.nix
     ../../modules/server/system.nix
     #../../modules/server/minecraft.nix
-
+	
+    ../../modules/server/hub/networks.nix
     ../../modules/server/hub/nextcloud.nix
     ../../modules/server/hub/cloudflare.nix
 
