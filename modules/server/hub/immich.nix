@@ -2,7 +2,6 @@
 
 {
   virtualisation.oci-containers.containers = {
-    # 1. Base de datos (Postgres con vectores para búsqueda por IA)
     immich-postgres = {
       image = "ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0";
       environment = {
@@ -14,13 +13,11 @@
       extraOptions = [ "--network=immich-net" ];
     };
 
-    # 2. Redis para la cola de tareas
     immich-redis = {
       image = "redis:6.2-alpine";
       extraOptions = [ "--network=immich-net" ];
     };
 
-    # 3. Microservicio de Machine Learning (Reconocimiento facial/objetos)
     immich-machine-learning = {
       image = "ghcr.io/immich-app/immich-machine-learning:release";
       environment = {
@@ -30,7 +27,6 @@
       extraOptions = [ "--network=immich-net" ];
     };
 
-    # 4. Servidor principal de Immich
     immich-server = {
       image = "ghcr.io/immich-app/immich-server:release";
       dependsOn = [ "immich-postgres" "immich-redis" ];
