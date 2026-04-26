@@ -7,14 +7,12 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # zen-browser.url = "github:0xc000022070/zen-browser-flake";
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     dawm-c = {
       url = "git+https://codeberg.org/notdanna/dawm.c.git";
       flake = false;
     };
-    # nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }: {
@@ -49,7 +47,11 @@
               ./home.nix
               ./modules/server/linux/fastfetch.nix
               ./modules/server/zsh.nix
-	      ./modules/server/linux/packages.nix
+
+	            ./modules/server/linux/packages.nix
+              ./modules/server/linux/dwm.nix
+              ./modules/server/linux/kitty.nix
+              ./modules/server/linux/alacritty.nix
             ];
           };
         }

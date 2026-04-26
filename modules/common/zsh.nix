@@ -27,14 +27,22 @@
       ls    = "eza --icons=always --group-directories-first";
       ll    = "eza -la --icons=always --group-directories-first";
       lt    = "eza --tree --icons=always";
-      grep  = "rg";
-      find  = "fd";
       cd    = "z";
       nv    = "nvim";
       cl    = "clear";
       ff    = "fastfetch -c ~/.config/fastfetch/config.jsonc";
       sshl  = "ssh dam@192.168.1.77";
       ssht  = "ssh dam@100.100.95.111";
+
+      gc = "git clone";
+      gp = "git pull";
+      gs = "git status";
+      ga = "git add";
+      gf = "git fetch";
+
+      dps = "docker ps";
+      dlogs = "docker logs -f";
+      dstop = "docker stop $(docker ps -q)";
 
       nixs  = "nix search nixpkgs";
       nixc  = "nix-collect-garbage -d";
