@@ -3,7 +3,10 @@
 {
   home.file.".config/alacritty/alacritty.toml".text = ''
     [font]
-    size = 10.0
+    size = 9.0
+
+    [font.offset]
+    y = -1
 
     [font.normal]
     family = "JetBrainsMono Nerd Font Mono"
@@ -19,7 +22,7 @@
     style = "Bold Italic"
 
     [window]
-    opacity = 0.0
+    opacity = 0.95
     decorations = "none"
 
     [window.dimensions]
