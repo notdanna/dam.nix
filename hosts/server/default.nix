@@ -95,6 +95,7 @@ in
     ../../modules/server/hub/navidrome.nix
     ../../modules/server/hub/slskd.nix
     ../../modules/server/hub/qbittorrent.nix
+    ../../modules/server/hub/kuma.nix
   ];
 
   # --- SISTEMA BASE ---
