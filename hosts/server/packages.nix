@@ -17,7 +17,8 @@
 
     dmenu
     st
-    xorg.xrandr
+    xrandr
+    qutebrowser
 
     zsh-powerlevel10k
     meslo-lgs-nf

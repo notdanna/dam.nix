@@ -36,7 +36,6 @@
           "/home/dam/nextcloud/data:/var/www/html"
           "/home/dam/navidrome/music:/navidrome_music:ro"
           "/home/dam/slskd/downloads:/slskd_downloads:ro"
-          "/home/dam/dataset:/dataset_tt:ro"
         ];
         extraOptions = [ "--network=nextcloud-net" ];
       };

@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
   # Definición de tus herramientas de suckless desde carpetas locales
   myDwm = pkgs.dwm.overrideAttrs (oldAttrs: {
-    src = /home/dam/dawm.c/dots/dwm;
+    src = "${inputs.dawm-c}/dots/dwm";
     preBuild = "make clean";
     makeFlags = [ "PREFIX=$(out)" ];
     buildInputs = with pkgs; [ 
@@ -16,16 +16,17 @@ let
   });
 
   myDmenu = pkgs.dmenu.overrideAttrs (oldAttrs: {
-    src = /home/dam/dawm.c/dots/dmenu;
+    src = "${inputs.dawm-c}/dots/dmenu";
     preBuild = "make clean";
     makeFlags = [ "PREFIX=$(out)" ];
-    buildInputs = with pkgs; [ 
-      libX11 
-      libXft 
-      libXinerama 
+    buildInputs = with pkgs; [
+      libX11
+      libXft
+      libXinerama
     ];
     nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.pkg-config ];
   });
+
 in
 {
   # --- SECRETOS Y ENTORNO ---
@@ -60,6 +61,12 @@ in
       chmod 600 /run/slskd.env
     '';
   };
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+  # Agrega aquí librerías básicas si es necesario, 
+  # pero usualmente solo activar el programa basta para VS Code.
+  ];
 
   # --- CONFIGURACIÓN DE NIX ---
   nixpkgs.config.allowUnfree = true;
@@ -138,7 +145,6 @@ in
     usbutils
     xrandr
     myDmenu
-    # Otros paquetes que necesites para tu dwm
     flameshot
     xcolor
     pamixer

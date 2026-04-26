@@ -10,6 +10,10 @@
     # zen-browser.url = "github:0xc000022070/zen-browser-flake";
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    dawm-c = {
+      url = "git+https://codeberg.org/notdanna/dawm.c.git";
+      flake = false;
+    };
     # nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
