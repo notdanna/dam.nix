@@ -23,6 +23,9 @@
     # 3. Microservicio de Machine Learning (Reconocimiento facial/objetos)
     immich-machine-learning = {
       image = "ghcr.io/immich-app/immich-machine-learning:release";
+      environment = {
+        MACHINE_LEARNING_HOST = "0.0.0.0";
+      };
       volumes = [ "/home/dam/immich/model-cache:/cache" ];
       extraOptions = [ "--network=immich-net" ];
     };

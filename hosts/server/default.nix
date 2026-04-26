@@ -122,6 +122,7 @@ in
 
   programs.zsh.enable = true;
   security.polkit.enable = true;
+  networking.firewall.trustedInterfaces = [ "docker0" ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
