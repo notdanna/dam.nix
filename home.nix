@@ -11,4 +11,5 @@
   ];
 
   programs.home-manager.enable = true;
+  programs.git.signing.format = "openpgp";
 }

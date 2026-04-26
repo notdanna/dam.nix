@@ -3,11 +3,11 @@
     "dawm-c": {
       "flake": false,
       "locked": {
-        "lastModified": 1777190011,
-        "narHash": "sha256-aNb8NwcnkgEdPGoCSMM60zZfd9q6z51+/RtOHnwfWzA=",
+        "lastModified": 1777224653,
+        "narHash": "sha256-OqmAdjO2a513xDqv42qpr/PpUcjFs/JZnUshPmKAATk=",
         "ref": "refs/heads/main",
-        "rev": "dbcdf95ec0952a15cb9619143836f824bb86cd7f",
-        "revCount": 4,
+        "rev": "db3d67e00abc830f8f7a45ba0dd0a479a44a226b",
+        "revCount": 6,
         "type": "git",
         "url": "https://codeberg.org/notdanna/dawm.c.git"
       },
@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776950293,
-        "narHash": "sha256-t6KMARLILjPuTBSRoYanUxV+FU50IFZ7L5XVdOcdtaY=",
+        "lastModified": 1777218285,
+        "narHash": "sha256-d2FY71SBVKVbT1PsfXA71jz0vD520NijS4lrcvUMeGk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6837e0d6c5eda81fd26308489799fbf83a160465",
+        "rev": "c55c498c9aa205b16cca78b57a7275625726d532",
         "type": "github"
       },
       "original": {
@@ -58,11 +58,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1776548001,
-        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
+        "lastModified": 1776877367,
+        "narHash": "sha256-EHq1/OX139R1RvBzOJ0aMRT3xnWyqtHBRUBuO1gFzjI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
+        "rev": "0726a0ecb6d4e08f6adced58726b95db924cef57",
         "type": "github"
       },
       "original": {
