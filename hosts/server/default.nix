@@ -2,13 +2,10 @@
 
 {
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-  # Agrega aquí librerías básicas si es necesario, 
-  # pero usualmente solo activar el programa basta para VS Code.
-  ];
+  programs.nix-ld.libraries = with pkgs; [ ];
 
+  services.resolved.enable = false;
 
-  # --- IMPORTS ---
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
@@ -26,6 +23,10 @@
     ../../modules/server/hub/slskd.nix
     ../../modules/server/hub/qbittorrent.nix
     ../../modules/server/hub/kuma.nix
+    ../../modules/server/hub/adguardhome.nix
+    ../../modules/server/hub/glances.nix
+    ../../modules/server/hub/hestia.nix
+    ../../modules/server/hub/vaultwarden.nix
   ];
 
   system.stateVersion = "25.11";

@@ -5,6 +5,7 @@
 
     casks = [
       "wireshark"
+      "bitwarden"
       
       "telegram"
       "vesktop"
